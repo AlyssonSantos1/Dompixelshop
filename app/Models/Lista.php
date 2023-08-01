@@ -9,5 +9,9 @@ class Lista extends Model
 {
     use HasFactory;
 
+    protected $table = 'lista1';
+
+    protected $primarykey = 'id';
+
     protected $fillable = ['nome', 'descricao', 'preco', 'quantidade'];
 }
