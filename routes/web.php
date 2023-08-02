@@ -53,6 +53,23 @@ Route::get('/editar-produto/{id_produto}', function ($id_produto) {
         echo "Produto Atualizado!";
    })->name('produto.update');
 
+   Route::get('excluir-produto/{id_produto}',function($id_produto) {
+    $lista1 = Lista::findOrFail($id_produto);
+    $lista1->delete();
+    echo "Produto Deletado";
+});
+
+Route::get('/catalogode-produto', function () {
+    $lista1 = Lista::select('nome', 'descricao', 'preco', 'quantidade')->get();
+    foreach ($lista1 as $lista1) {
+        echo "Nome: " . $lista1->nome . "<br>";
+        echo "Descricao: " . $lista1->descricao . "<br>";
+        echo "Preco: " . $lista1->preco . "<br>";
+        echo "Quantidade: " . $lista1->quantidade . "<br>";
+        echo "<br>";
+    }
+});
+
 
 
 // Route::post('/cadastrar-produto', function (Request $informacao) {
