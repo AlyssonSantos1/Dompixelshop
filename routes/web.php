@@ -43,15 +43,16 @@ Route::get('/editar-produto/{id_produto}', function ($id_produto) {
 
 });
 
-Route::put('/atualizar-produto/{id_produto}', function (Request $informacao, $id_produto) {
-    $lista1 = Lista::findOrFail($id_produto);
-    $lista1->nome = $informacao->nome_produto;
-    $lista1->descricao = $informacao->descricao_produto;
-    $lista1->preco = $informacao->preco_produto;
-    $lista1->quantidade = $informacao->quantidade_produto;
-    $lista1->save();
-    echo "Produto Atualizado!";
-});
+    Route::put('atualizar-produto/{id_produto}', function(Request $informacao, $id_produto) {
+        $lista1 = Lista::findOrFail($id_produto);
+        $lista1->nome = $informacao->nome_produto;
+        $lista1->descricao = $informacao->descricao_produto;
+        $lista1->preco = $informacao->preco_produto;
+        $lista1->quantidade = $informacao->quantidade_produto;
+        $lista1->save();
+        echo "Produto Atualizado!";
+   })->name('produto.update');
+
 
 
 // Route::post('/cadastrar-produto', function (Request $informacao) {
