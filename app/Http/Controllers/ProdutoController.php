@@ -41,7 +41,7 @@ class ProdutoController extends Controller
         $lista1->quantidade = $informacao->quantidade_produto;
         $lista1->save();
         echo "Produto Atualizado!";
-   })->name('produto.update');
+   }->name('produto.update');
 
     public function excluirProduto(Request $informacao, $id_produto){
     $lista1 = Lista::findOrFail($id_produto);
