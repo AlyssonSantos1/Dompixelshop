@@ -62,11 +62,8 @@ class ProdutoController extends Controller
         }
     }
 
+    public function cadastrarProduto(Request $informacao){
+        $lista1 = Lista::findOrFail();
+        return view('cadastrar-produto');
+    }
 }
-
-
-
-
-
-
-

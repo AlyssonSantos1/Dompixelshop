@@ -21,22 +21,26 @@ Route::get('/', function () {
 });
 
 Route::post('/cadastrar-produto/{id_produto}',
-[ProdutoController::class,'cadastrar-produto'])->name('produto.create');
+[ProdutoController::class,'cadastrarProduto'])->name('produto.create');
+
+Route::get('/cadastrar-produto',
+[ProdutoController::class,'cadastrarProduto'])->name('produto.new');
+
 
 Route::get('/mostrar-produto/{id_produto}',
-[ProdutoController::class,'mostrar-produto'])->name('produto.show');
+[ProdutoController::class,'mostrarProduto'])->name('produto.show');
 
 Route::get('/editar-produto/{id_produto}',
-[ProdutoController::class,'editar-produto'])->name('produto.edit');
+[ProdutoController::class,'editarProduto'])->name('produto.edit');
 
 Route::put('/atualizar-produto/{id_produto}',
-[ProdutoController::class,'atualizar-produto'])->name('produto.update');
+[ProdutoController::class,'atualizarProduto'])->name('produto.update');
 
 Route::get('/excluir-produto/{id_produto}',
-[ProdutoController::class,'excluir-produto'])->name('produto.delete');
+[ProdutoController::class,'excluirProduto'])->name('produto.delete');
 
 Route::get('/catalogo-de-produto/{id_produto}',
-[ProdutoController::class,'catalogo-de-produto'])->name('produto.list');
+[ProdutoController::class,'index'])->name('produto.list');
 
 
 
