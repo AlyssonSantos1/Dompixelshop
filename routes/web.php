@@ -50,7 +50,7 @@ Route::put('/atualizar-produto/{id_produto}', function (Request $informacao, $id
     $lista1->preco = $informacao->preco_produto;
     $lista1->quantidade = $informacao->quantidade_produto;
     $lista1->save();
-    echo "Produto Atualizado";
+    echo "Produto Atualizado!";
 });
 
 

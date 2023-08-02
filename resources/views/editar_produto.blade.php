@@ -7,7 +7,7 @@
     <title>Catalogo de Produtos</title>
 </head>
 <body>
-    <form action="/atualizar-produto/{{ $lista1->id }}" method="POST">
+    <form action="{{route('produto.update',$lista1->id)}} " method="POST">
     @csrf
     @method("PUT")
     <label for="">Nome</label>
