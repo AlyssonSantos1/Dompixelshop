@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProdutoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Lista;
@@ -19,66 +20,86 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/cadastrar-produto', function (Request $informacao) {
-    Lista::create([
-        'nome' => $informacao->nome_produto,
-        'descricao' => $informacao->descricao_produto,
-        'preco' => $informacao->preco_produto,
-        'quantidade' => $informacao->quantidade_produto,
+Route::post('/cadastrar-produto/{id_produto}',
+[ProdutoController::class,'cadastrar-produto'])->name('produto.create');
 
-    ]);
-    echo "criado com sucesso";
-});
+Route::get('/mostrar-produto/{id_produto}',
+[ProdutoController::class,'mostrar-produto'])->name('produto.show');
 
-Route::get('/mostrar-produto/{id_produto}', function ($id_produto) {
-    $lista1 = Lista::findOrFail($id_produto);
-    echo $lista1->descricao;
-    echo "<br />";
-    echo $lista1->nome;
-});
+Route::get('/editar-produto/{id_produto}',
+[ProdutoController::class,'editar-produto'])->name('produto.edit');
 
-Route::get('/editar-produto/{id_produto}', function ($id_produto) {
-    $lista1 = Lista::findOrFail($id_produto);
-    return view('editar_produto', ['lista1' => $lista1]);
+Route::put('/atualizar-produto/{id_produto}',
+[ProdutoController::class,'atualizar-produto'])->name('produto.update');
 
-});
+Route::get('/excluir-produto/{id_produto}',
+[ProdutoController::class,'excluir-produto'])->name('produto.delete');
 
-    Route::put('atualizar-produto/{id_produto}', function(Request $informacao, $id_produto) {
-        $lista1 = Lista::findOrFail($id_produto);
-        $lista1->nome = $informacao->nome_produto;
-        $lista1->descricao = $informacao->descricao_produto;
-        $lista1->preco = $informacao->preco_produto;
-        $lista1->quantidade = $informacao->quantidade_produto;
-        $lista1->save();
-        echo "Produto Atualizado!";
-   })->name('produto.update');
-
-   Route::get('excluir-produto/{id_produto}',function($id_produto) {
-    $lista1 = Lista::findOrFail($id_produto);
-    $lista1->delete();
-    echo "Produto Deletado";
-});
-
-Route::get('/catalogode-produto', function () {
-    $lista1 = Lista::select('nome', 'descricao', 'preco', 'quantidade')->get();
-    foreach ($lista1 as $lista1) {
-        echo "Nome: " . $lista1->nome . "<br>";
-        echo "Descricao: " . $lista1->descricao . "<br>";
-        echo "Preco: " . $lista1->preco . "<br>";
-        echo "Quantidade: " . $lista1->quantidade . "<br>";
-        echo "<br>";
-    }
-});
+Route::get('/catalogo-de-produto/{id_produto}',
+[ProdutoController::class,'catalogo-de-produto'])->name('produto.list');
 
 
 
 // Route::post('/cadastrar-produto', function (Request $informacao) {
-//    Cadastro::create([
-//     'nome' => $informacao->nome_produto,
-//      'descricao' =>$informacao->descricao_produto,
-//      'preco' =>$informacao->preco_produto,
-//      'quantidade' =>$informacao->quantidade_estoque
+//     Lista::create([
+//         'nome' => $informacao->nome_produto,
+//         'descricao' => $informacao->descricao_produto,
+//         'preco' => $informacao->preco_produto,
+//         'quantidade' => $informacao->quantidade_produto,
 
-//  ]);
-//  return "cadastro criado!";
+//     ]);
+//     echo "criado com sucesso";
 // });
+
+// Route::get('/mostrar-produto/{id_produto}', function ($id_produto) {
+//     $lista1 = Lista::findOrFail($id_produto);
+//     echo $lista1->descricao;
+//     echo "<br />";
+//     echo $lista1->nome;
+// });
+
+// Route::get('/editar-produto/{id_produto}', function ($id_produto) {
+//     $lista1 = Lista::findOrFail($id_produto);
+//     return view('editar_produto', ['lista1' => $lista1]);
+
+// });
+
+//     Route::put('atualizar-produto/{id_produto}', function(Request $informacao, $id_produto) {
+//         $lista1 = Lista::findOrFail($id_produto);
+//         $lista1->nome = $informacao->nome_produto;
+//         $lista1->descricao = $informacao->descricao_produto;
+//         $lista1->preco = $informacao->preco_produto;
+//         $lista1->quantidade = $informacao->quantidade_produto;
+//         $lista1->save();
+//         echo "Produto Atualizado!";
+//    })->name('produto.update');
+
+//    Route::get('excluir-produto/{id_produto}',function($id_produto) {
+//     $lista1 = Lista::findOrFail($id_produto);
+//     $lista1->delete();
+//     echo "Produto Deletado";
+// });
+
+// Route::get('/catalogode-produto', function () {
+//     $lista1 = Lista::select('nome', 'descricao', 'preco', 'quantidade')->get();
+//     foreach ($lista1 as $lista1) {
+//         echo "Nome: " . $lista1->nome . "<br>";
+//         echo "Descricao: " . $lista1->descricao . "<br>";
+//         echo "Preco: " . $lista1->preco . "<br>";
+//         echo "Quantidade: " . $lista1->quantidade . "<br>";
+//         echo "<br>";
+//     }
+// });
+
+
+
+// // Route::post('/cadastrar-produto', function (Request $informacao) {
+// //    Cadastro::create([
+// //     'nome' => $informacao->nome_produto,
+// //      'descricao' =>$informacao->descricao_produto,
+// //      'preco' =>$informacao->preco_produto,
+// //      'quantidade' =>$informacao->quantidade_estoque
+
+// //  ]);
+// //  return "cadastro criado!";
+// // });

@@ -24,7 +24,7 @@ class ProdutoController extends Controller
         echo $lista1->descricao;
         echo "<br />";
         echo $lista1->nome;
-    };
+    }
 
     public function editarProduto(Request $informacao, $id_produto){
 
@@ -41,13 +41,14 @@ class ProdutoController extends Controller
         $lista1->quantidade = $informacao->quantidade_produto;
         $lista1->save();
         echo "Produto Atualizado!";
-   }->name('produto.update');
+    }
 
-    public function excluirProduto(Request $informacao, $id_produto){
-    $lista1 = Lista::findOrFail($id_produto);
-    $lista1->delete();
+    public function excluirProduto( $id_produto) {
+        $lista1 = Lista::findOrFail($id_produto);
+        $lista1->delete();
     echo "Produto Deletado";
-});
+    }
+
 
     public function index()
     {
@@ -59,10 +60,13 @@ class ProdutoController extends Controller
             echo "Quantidade: " . $lista1->quantidade . "<br>";
             echo "<br>";
         }
-    });
-
-
-
-
+    }
 
 }
+
+
+
+
+
+
+
