@@ -29,7 +29,7 @@ class ProdutoController extends Controller
     public function editarProduto(Request $informacao, $id_produto){
 
             $lista1 = Lista::findOrFail($id_produto);
-            return view('editar_produto', ['lista1' => $lista1]);
+            return view('editar-produto', ['lista1' => $lista1]);
 
     }
 

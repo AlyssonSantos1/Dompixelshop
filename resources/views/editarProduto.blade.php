@@ -26,5 +26,15 @@
 
 </form>
 
-</body>
+    <form action="/profile/delete/{{ $experience->id }}" id="delete_profile_{{ $experience->id }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" form="delete_profile_{{$lista1->id}}">
+            <ion-icon name="trash-outline">
+                Deletar
+            </ion-icon>
+        </button>
+    </form>
+
+    </body>
 </html>
