@@ -26,7 +26,7 @@
 
 </form>
 
-    <form action="/profile/delete/{{ $experience->id }}" id="delete_profile_{{ $experience->id }}" method="POST">
+    <form action="/profile/delete/{{ $lista1->id }}" id="delete_profile_{{ $lista1->id }}" method="POST">
         @csrf
         @method('DELETE')
         <button type="submit" form="delete_profile_{{$lista1->id}}">
