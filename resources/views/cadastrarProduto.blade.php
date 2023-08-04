@@ -7,7 +7,7 @@
     <title>Catalogo de Produtos</title>
 </head>
 <body>
-    <form action="{{route('produto.create',$lista1->id)}} " method="POST">
+    <form action="{{route('produto.create')}} " method="POST">
     @csrf
     <label for="">Nome</label>
     <input type="text" placeholder="Digite o nome do Produto" name="nome_produto">

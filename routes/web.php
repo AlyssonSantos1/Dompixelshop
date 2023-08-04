@@ -20,11 +20,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/cadastrar-produto/{id_produto}',
-[ProdutoController::class,'cadastrarProduto'])->name('produto.create');
+Route::post('/cadastrar-produto',[ProdutoController::class,'cadastrarProduto'])->name('produto.create');
 
-Route::get('/cadastrar-produto',
-[ProdutoController::class,'cadastrarProduto'])->name('produto.new');
+Route::get('/cadastrar-produto',[ProdutoController::class,'criarProduto']);
 
 
 Route::get('/mostrar-produto/{id_produto}',
@@ -39,7 +37,7 @@ Route::put('/atualizar-produto/{id_produto}',
 Route::get('/excluir-produto/{id_produto}',
 [ProdutoController::class,'excluirProduto'])->name('produto.delete');
 
-Route::get('/catalogo-de-produto/{id_produto}',
+Route::get('/catalogo-de-produto/{id_produto?}',
 [ProdutoController::class,'index'])->name('produto.list');
 
 

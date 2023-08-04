@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Redis;
 
 class ProdutoController extends Controller
 {
-    public function cadastrarProduto(Request $informacao, $id_produto){
+    public function cadastrarProduto(Request $informacao){
         Lista::create([
             'nome' => $informacao->nome_produto,
             'descricao' => $informacao->descricao_produto,
@@ -62,8 +62,7 @@ class ProdutoController extends Controller
         }
     }
 
-    public function cadastrarProduto(Request $informacao){
-        $lista1 = Lista::findOrFail();
-        return view('cadastrar-produto');
+    public function criarProduto(){
+        return view('cadastrarProduto');
     }
 }
