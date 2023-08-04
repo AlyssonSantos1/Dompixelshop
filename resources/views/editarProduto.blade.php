@@ -26,13 +26,10 @@
 
 </form>
 
-    <form action="/profile/delete/{{ $lista1->id }}" id="delete_profile_{{ $lista1->id }}" method="POST">
+    <form action="{{ route('produto.delete', $lista1->id) }}" method="POST">
         @csrf
         @method('DELETE')
         <button type="submit" form="delete_profile_{{$lista1->id}}">
-            <ion-icon name="trash-outline">
-                Deletar
-            </ion-icon>
         </button>
     </form>
 
