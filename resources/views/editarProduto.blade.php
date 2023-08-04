@@ -29,8 +29,8 @@
     <form action="{{ route('produto.delete', $lista1->id) }}" method="POST">
         @csrf
         @method('DELETE')
-        <button type="submit" form="delete_profile_{{$lista1->id}}">
-        </button>
+        <button type="submit">
+
     </form>
 
     </body>
