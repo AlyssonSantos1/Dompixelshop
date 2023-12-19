@@ -21,9 +21,9 @@ class ProdutoController extends Controller
 
     public function mostrarProduto(Request $informacao, $id_produto){
         $lista1 = Lista::findOrFail($id_produto);
-        echo $lista1->descricao;
-        echo "<br />";
-        echo $lista1->nome;
+        return view('mostrarProduto', ['lista1' => $lista1]);
+
+
     }
 
     public function editarProduto(Request $informacao, $id_produto){
@@ -50,17 +50,11 @@ class ProdutoController extends Controller
     }
 
 
-    public function index()
-    {
-        $lista1 = Lista::select('nome', 'descricao', 'preco', 'quantidade')->get();
-        foreach ($lista1 as $lista1) {
-            echo "Nome: " . $lista1->nome . "<br>";
-            echo "Descricao: " . $lista1->descricao . "<br>";
-            echo "Preco: " . $lista1->preco . "<br>";
-            echo "Quantidade: " . $lista1->quantidade . "<br>";
-            echo "<br>";
-        }
+    public function index(){
+        $lista1 = Lista::all();
+        return view('index',['lista1' => $lista1]);
     }
+
 
     public function criarProduto(){
         return view('cadastrarProduto');

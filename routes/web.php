@@ -40,6 +40,8 @@ Route::get('/excluir-produto/{id_produto}',
 Route::get('/catalogo-de-produto/{id_produto?}',
 [ProdutoController::class,'index'])->name('produto.list');
 
+Route::get('/index/listar-produtos',[ProdutoController::class,'index']);
+
 
 
 // Route::post('/cadastrar-produto', function (Request $informacao) {
