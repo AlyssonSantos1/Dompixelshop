@@ -13,7 +13,7 @@
     {{$lista->preco}}
     {{$lista->quantidade}}
 
-    <form action="{{ route('produto.delete', $lista->id) }}" method="POST">
+    <form action="{{ route('produto.delete', '$lista->id') }}" method="POST">
         @csrf
         @method('DELETE')
         <button>Remover</button>
